@@ -30,7 +30,7 @@ def get_prompt():
         prompt_text = prompt_example + recent_job
         print(prompt_text)
         answer = callChatGpt(prompt_text)
-    return render_template('home.html', answer=answer)
+    return render_template('home.html', answerToHtml=answer)
 
 
 # callChatGpt("How many bones do a shark have?")
