@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 import openai
 import os
 import json
-from flask import jsonify
 load_dotenv()
 openai.organization = os.getenv("ORG_ID")
 openai.api_key = os.getenv("JOB_ROUTE_KEY")
