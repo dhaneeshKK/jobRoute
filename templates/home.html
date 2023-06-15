@@ -18,12 +18,15 @@
     <body>
         <div>
         <h1 class="text-center mt-2 mb-4">Job Route</h1>
-        <img class="img-fluid text-center" src="./static/banner.jpg" width="320" height="120">
+            <div class="text-center">
+            <img class="img-fluid" src="./static/banner.jpg" width="320" height="120">
+            </div>
         <h2 class="text-center">About Job Route</h2>
-        <p>
+        <p class="text-center">
         Job route helps new Canadians and people trying to pivot to new 
         careers.
         </p>
+        <div class="text-center">
         <form action="{{ url_for("get_prompt")}}" method="post" enctype="multipart/form-data">
         <label for="recent_job">Recent Job:</label>
         <input type="text" id="recent_job" name="recentjob" placeholder="current or recent job">
@@ -31,6 +34,7 @@
         <label for="skills">Three skills:</label>
         <input type="text" id="skills" name="skills" placeholder="Three skills">
         <button type="submit">Submit</button>
+        </div>
         <p class="lead mt-4 mb-4">
         {{answerToHtml}}
         </p>
