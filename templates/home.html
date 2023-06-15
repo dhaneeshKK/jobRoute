@@ -24,7 +24,7 @@
         Job route helps new Canadians and people trying to pivot to new 
         careers.
         </p>
-        <form action="{{ url_for("get_prompt")}}" method="post">
+        <form action="{{ url_for("get_prompt")}}" method="post" enctype="multipart/form-data">
         <label for="recent_job">Recent Job:</label>
         <input type="text" id="recent_job" name="recentjob" placeholder="current or recent job">
         <br></br>
