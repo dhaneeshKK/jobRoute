@@ -1,5 +1,3 @@
 Flask
 gunicorn
 load_dotenv
-openai
-os
