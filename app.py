@@ -5,7 +5,7 @@ import os
 load_dotenv()
 openai.organization = os.getenv("ORG_ID")
 openai.api_key = os.getenv("JOB_ROUTE_KEY")
-
+answer = ''
 app = Flask(__name__)
 
 prompt_example = "I am doing research on transferable skills between similar occupations. My primary reference is the National Occupation Classification (NOC) developed by the Government of Canada. Based on a given NOC code, I want you to identify 5 similar jobs with a percentage similarity estimate based on overlapping skills and education requirements. The job I need you to analyze is "
