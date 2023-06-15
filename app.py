@@ -22,7 +22,7 @@ def callChatGpt(prompt_text):
     return answer
 
 
-@app.route("/answer", methods=["POST"])
+@app.route("/answer", methods=["GET", "POST"])
 def get_prompt():
     if request.method == "POST":
         recent_job = request.form.get("recentjob")
@@ -30,12 +30,13 @@ def get_prompt():
         prompt_text = prompt_example + recent_job
         print(prompt_text)
         answer = callChatGpt(prompt_text)
-        return answer
+        # return answer
+        return render_template('answer.html', answerToHtml=answer)
 
 
 @app.route("/", methods=["GET", "POST"])
 def job_route():
-    return render_template('home.html', answerToHtml=answer)
+    return render_template('home.html')
 
 
 # callChatGpt("How many bones do a shark have?")
