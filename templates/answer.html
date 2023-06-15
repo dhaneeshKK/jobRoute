@@ -13,7 +13,10 @@
     <body>
         <div>
         <h1 class="text-center mt-2 mb-4">Other jobs with NOC</h1>
-        <p>
-        {{answerToHtml}}
-        </p>
+        
+        <div>
+            {% for i in  answerToHtml.similar_jobs %}
+            <div>{{ i }} </div>
+            {% endfor %}
+        </div>
         </div>
