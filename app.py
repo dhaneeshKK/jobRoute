@@ -22,7 +22,7 @@ def callChatGpt(prompt_text):
     return answer
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["POST"])
 def get_prompt():
     if request.method == "POST":
         recent_job = request.form.get("recentjob")
