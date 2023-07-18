@@ -5,21 +5,16 @@ import openai
 import os
 import json
 import requests
+from prompt_variables import prompt_example, prompt_json
 app = Flask(__name__, template_folder="templates")
 cors = CORS(app)
 load_dotenv()
 openai.organization = os.getenv("ORG_ID")
 openai.api_key = os.getenv("JOB_ROUTE_KEY")
-captcha_site_key = os.getenv("CAPTCHA_SITE_KEY")
-captcha_secret_key = os.getenv("CAPTCHA_SECRET_KEY")
 captcha_site_key_v2 = os.getenv("CAPTCHA_SITE_KEY_V2")
 captcha_secret_key_v2 = os.getenv("CAPTCHA_SECRET_KEY_V2")
 captcha_verify_url = 'https://www.google.com/recaptcha/api/siteverify'
 answer = ''
-
-prompt_example = "I am doing research on transferable skills between similar occupations. My primary reference is the National Occupation Classification (NOC) developed by the Government of Canada. Based on a given NOC code, I want you to identify 5 similar jobs with a percentage similarity estimate based on overlapping skills and education requirements. The job I need you to analyze is "
-
-prompt_json = "Please provide a response in JSON format only, based on the given NOC code. Include the original job title, and a node called 'similar_jobs' with sub-nodes containing 'job_title', 'noc_code' and 'percent_similarity'"
 
 
 def callChatGpt(prompt_text):
@@ -50,10 +45,11 @@ def get_prompt():
             prompt_text = prompt_example + recent_job + prompt_json
             answer = json.loads(callChatGpt(prompt_text))
             print(type(answer))
+            print(answer)
             return render_template('answer.html', answerToHtml=answer)
         else:
-            print("Not Authorized")
-            return render_template('not_authorized.html')
+            print("Wrong Captcha")
+            return render_template('wrong_captcha.html')
 
 
 if __name__ == "__main__":
